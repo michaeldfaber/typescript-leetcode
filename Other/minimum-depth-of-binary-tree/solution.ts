@@ -1,4 +1,4 @@
-import { TreeNode } from "../../../Types/TreeNode";
+import { TreeNode } from "../../Types/TreeNode";
 
 function minDepth(root: TreeNode | null): number {
     if (root === null) {
