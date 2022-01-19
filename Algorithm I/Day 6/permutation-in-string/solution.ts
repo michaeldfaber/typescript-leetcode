@@ -32,3 +32,16 @@ function checkInclusion(s1: string, s2: string): boolean {
     
     return false;
 };
+
+// time limit exceeded here, but it is a valid solution
+function checkInclusion2(s1: string, s2: string): boolean {
+    for (let i = 0; i < s2.length; i++) {
+        let end = i + s1.length;
+        let s = s2.substring(i, end);
+        if (s.split("").sort().join("") === s1.split("").sort().join("")) {
+            return true;
+        }
+    }
+    
+    return false;
+};
