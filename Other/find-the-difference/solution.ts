@@ -11,3 +11,15 @@ function findTheDifference(s: string, t: string): string {
         else map[t[i]] = map[t[i]] - 1;
     }
 }
+
+// alternative solution with sorting
+function findTheDifference2(s: string, t: string): string {
+    s = s.split("").sort().join("");
+    t = t.split("").sort().join("");
+    
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== t[i]) return t[i];
+    }
+    
+    return t[t.length-1];
+}
