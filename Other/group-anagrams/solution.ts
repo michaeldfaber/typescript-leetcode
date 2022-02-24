@@ -1,4 +1,24 @@
 function groupAnagrams(strs: string[]): string[][] {
+    let map: Map<string, number> = new Map();
+    let result: string[][] = [];
+    let index = 0;
+    
+    for (let i = 0; i < strs.length; i++) {
+        let sorted = strs[i].split("").sort().join("");
+        
+        if (map[sorted] !== undefined) {
+            result[map[sorted]].push(strs[i]);
+        } else {
+            result.push([strs[i]]);
+            map[sorted] = index;
+            index++;
+        }
+    }
+    
+    return result;
+};
+
+function groupAnagrams2(strs: string[]): string[][] {
     if (strs.length === 1) return [[strs[0]]];
     
     let results: string[][] = [];
@@ -35,7 +55,7 @@ function groupAnagrams(strs: string[]): string[][] {
     return results;
 };
 
-function groupAnagrams2(strs: string[]): string[][] {
+function groupAnagrams3(strs: string[]): string[][] {
     if (strs.length === 1) return [[strs[0]]];
     
     let remaining: string[] = [];
