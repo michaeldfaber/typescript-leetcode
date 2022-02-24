@@ -1,6 +1,43 @@
 function groupAnagrams(strs: string[]): string[][] {
     if (strs.length === 1) return [[strs[0]]];
     
+    let results: string[][] = [];
+    let remaining: string[] = [];
+    let sortedRemaining: string[] = [];
+    
+    let sortedStrs: string[] = [];
+    for (let i = 0; i < strs.length; i++) {
+        sortedStrs[i] = strs[i].split("").sort().join("");
+    }
+    
+    while (strs.length !== 0) {
+        let result: string[] = [strs[0]];
+        
+        for (let i = 1; i < strs.length; i++) {
+            if (sortedStrs[0] === sortedStrs[i]) {
+                result.push(strs[i]);
+            } else {
+                remaining.push(strs[i]);
+                sortedRemaining.push(sortedStrs[i]);
+            }
+        }
+        
+        results.push(result);
+        
+        strs = remaining;
+        remaining = [];
+        
+        sortedStrs = sortedRemaining;
+        sortedRemaining = [];
+        
+    }
+    
+    return results;
+};
+
+function groupAnagrams2(strs: string[]): string[][] {
+    if (strs.length === 1) return [[strs[0]]];
+    
     let remaining: string[] = [];
     let results: string[][] = [];
     
