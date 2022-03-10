@@ -2,7 +2,7 @@ function maximumTime(time: string): string {
     let newTime: string = "";
     
     newTime = time[4] === "?" ? "9" : time[4];
-    newTime = time[3] === "?" ? newTime = "5" + newTime : time[3] + newTime;
+    newTime = time[3] === "?" ? "5" + newTime : time[3] + newTime;
     newTime = ":" + newTime;
     
     if (time[0] === "?" || time[0] === "2") {
