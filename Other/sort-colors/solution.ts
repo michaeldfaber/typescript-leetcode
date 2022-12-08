@@ -28,3 +28,27 @@ function swap(nums: number[], i: number, j: number) {
     nums[i] = nums[j];
     nums[j] = temp;
 }
+
+// alternative solution, not in place
+
+function sortColors2(nums: number[]): void {
+    if (nums.length === 1) return;
+    
+    let zero = 0;
+    let one = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        switch (nums[i]) {
+            case 0:
+                zero++;
+                break;
+            case 1:
+                one++;
+                break;
+        }
+    }
+
+    for (let i = 0; i < zero; i++) nums[i] = 0;
+    for (let i = zero; i < zero + one; i++) nums[i] = 1;
+    for (let i = zero + one; i < nums.length; i++) nums[i] = 2;
+}
